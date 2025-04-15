@@ -9,19 +9,33 @@ export default function Home() {
       md:flex-row"
       >
         <input
-          type="text"
+          type="email"
+          required
           placeholder="Search here.."
           className="w-full rounded-full h-12 bg-gray-200 px-5 outline-none
-          ring ring-transparent focus:ring-orange-500 focus:ring-offset-2 transition-shadow
-          placeholder:text-gray-400"
+          ring ring-transparent focus:ring-green-500 focus:ring-offset-2 transition-shadow
+          placeholder:text-gray-400
+          invalid:ring-red-500 peer"
         />
+        <span className="text-red-500 font-medium hidden peer-invalid:block">
+          Email is required..
+        </span>
         <button
-          className="bg-black text-white py-2 rounded-full 
+          className="text-white py-2 rounded-full 
           active:scale-90 
-          transition-transform font-medium outline-none
-          bg-opacity-50"
+          transition-transform font-medium outline-none px-10 bg-black
+          peer-invalid:bg-red-500 peer-required:bg-green-500
+          "
         >
-          Search
+          Log in
+        </button>
+        <button
+          className="text-white py-2 rounded-full 
+          active:scale-90 
+          transition-transform font-medium outline-none px-10
+          bg-gradient-to-tr from-cyan-500 via-orange-200 to-purple-400"
+        >
+          gradient sample
         </button>
       </div>
     </main>
