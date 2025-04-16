@@ -6,16 +6,17 @@ export default function Home() {
     >
       <div
         className="bg-white shadow-lg w-full rounded-3xl p-5 max-w-screen-sm flex flex-col gap-2
-      md:flex-row"
+      md:flex-row *:outline-none ring ring-transparent transition-shadow
+      has-[:invalid]:ring-red-100 has-[:invalid]:ring"
       >
         <input
-          type="email"
+          type="text"
           required
           placeholder="Search here.."
-          className="w-full rounded-full h-12 bg-gray-200 px-5 outline-none
+          className="w-full rounded-full h-12 bg-gray-200 px-5 
           ring ring-transparent focus:ring-green-500 focus:ring-offset-2 transition-shadow
           placeholder:text-gray-400
-          invalid:ring-red-500 peer"
+          invalid:focus:ring-red-500 peer"
         />
         <span className="text-red-500 font-medium hidden peer-invalid:block">
           Email is required..
@@ -23,7 +24,7 @@ export default function Home() {
         <button
           className="text-white py-2 rounded-full 
           active:scale-90 
-          transition-transform font-medium outline-none px-10 bg-black
+          transition-transform font-medium px-10 bg-black
           peer-invalid:bg-red-500 peer-required:bg-green-500
           "
         >
@@ -32,7 +33,7 @@ export default function Home() {
         <button
           className="text-white py-2 rounded-full 
           active:scale-90 
-          transition-transform font-medium outline-none px-10
+          transition-transform font-medium px-10
           bg-gradient-to-tr from-cyan-500 via-orange-200 to-purple-400"
         >
           gradient sample
