@@ -5,39 +5,27 @@ export default function Home() {
       h-screen flex items-center justify-center p-5"
     >
       <div
-        className="bg-white shadow-lg w-full rounded-3xl p-5 max-w-screen-sm flex flex-col gap-2
-      md:flex-row *:outline-none ring ring-transparent transition-shadow
-      has-[:invalid]:ring-red-100 has-[:invalid]:ring"
+        className="bg-white shadow-lg w-full rounded-3xl p-5 max-w-screen-sm flex flex-col
+      md:flex-row gap-3"
       >
-        <input
-          type="text"
-          required
-          placeholder="Search here.."
-          className="w-full rounded-full h-12 bg-gray-200 px-5 
-          ring ring-transparent focus:ring-green-500 focus:ring-offset-2 transition-shadow
-          placeholder:text-gray-400
-          invalid:focus:ring-red-500 peer"
-        />
-        <span className="text-red-500 font-medium hidden peer-invalid:block">
-          Email is required..
-        </span>
-        <button
-          className="text-white py-2 rounded-full 
-          active:scale-90 
-          transition-transform font-medium px-10 bg-black
-          peer-invalid:bg-red-500 peer-required:bg-green-500
-          "
-        >
-          Log in
-        </button>
-        <button
-          className="text-white py-2 rounded-full 
-          active:scale-90 
-          transition-transform font-medium px-10
-          bg-gradient-to-tr from-cyan-500 via-orange-200 to-purple-400"
-        >
-          gradient sample
-        </button>
+        {["Nico", "Me", "You", "Yourself", ""].map((person, index) => (
+          <div key={index} className="flex items-center gap-5">
+            <div className="size-10 bg-blue-400 rounded-full" />
+            <span
+              className="text-lg font-medium animate-pulse
+            empty:w-40 empty:h-3 empty:rounded-full empty:bg-gray-400"
+            >
+              {person}
+            </span>
+            <div
+              className="flex items-center justify-center size-6 bg-red-500 rounded-full text-white
+            animate-bounce relative"
+            >
+              <span className="z-10">{index}</span>
+              <span className="size-6 bg-red-500 rounded-full absolute animate-ping"></span>
+            </div>
+          </div>
+        ))}
       </div>
     </main>
   );
