@@ -9,11 +9,12 @@ export default function Home() {
       md:flex-row gap-3"
       >
         {["Nico", "Me", "You", "Yourself", ""].map((person, index) => (
-          <div key={index} className="flex items-center gap-5">
+          <div key={index} className="flex items-center gap-5 group">
             <div className="size-10 bg-blue-400 rounded-full" />
             <span
               className="text-lg font-medium animate-pulse
-            empty:w-40 empty:h-3 empty:rounded-full empty:bg-gray-400"
+            empty:w-40 empty:h-3 empty:rounded-full empty:bg-gray-400 
+            group-hover:text-red-500"
             >
               {person}
             </span>
