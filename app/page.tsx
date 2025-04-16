@@ -8,25 +8,16 @@ export default function Home() {
         className="bg-white shadow-lg w-full rounded-3xl p-5 max-w-screen-sm flex flex-col
       md:flex-row gap-3"
       >
-        {["Nico", "Me", "You", "Yourself", ""].map((person, index) => (
-          <div key={index} className="flex items-center gap-5 group">
-            <div className="size-10 bg-blue-400 rounded-full" />
-            <span
-              className="text-lg font-medium animate-pulse
-            empty:w-40 empty:h-3 empty:rounded-full empty:bg-gray-400 
-            group-hover:text-red-500"
-            >
-              {person}
-            </span>
-            <div
-              className="flex items-center justify-center size-6 bg-red-500 rounded-full text-white
-            animate-bounce relative"
-            >
-              <span className="z-10">{index}</span>
-              <span className="size-6 bg-red-500 rounded-full absolute animate-ping"></span>
-            </div>
-          </div>
-        ))}
+        <div className="group flex flex-col">
+          <input
+            className="bg-gray-100 w-full"
+            placeholder="Write your email"
+          />
+          <span className="group-focus-within:block hidden">
+            Make sure it is a valid email...
+          </span>
+          <button>Submit</button>
+        </div>
       </div>
     </main>
   );
