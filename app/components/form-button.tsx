@@ -10,10 +10,10 @@ export default function FormButton({ text }: FormButtonProps) {
   return (
     <button
       disabled={pending}
-      className="primary-btn h-10 
+      className="primary-btn h-12
       disabled:bg-neutral-400 disabled:text-neutral-300 disabled:cursor-not-allowed"
     >
-      {pending ? "로딩중" : text}
+      {pending ? "Loading.." : text}
     </button>
   );
 }

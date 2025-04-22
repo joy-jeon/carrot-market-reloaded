@@ -1,8 +1,14 @@
 "use server";
 export async function handleForm(prevState: any, formData: FormData) {
-  await new Promise((resolve) => setTimeout(resolve, 5000));
-  // redirect("/");
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  const password = formData.get("password");
+
+  if (password !== "12345") {
+    return {
+      errors: ["wrong password"],
+    };
+  }
   return {
-    errors: ["wrong password", "비밀번호가 짧아요"],
+    message: "로그인에 성공했습니다!",
   };
 }

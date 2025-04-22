@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-neutral-900 text-white max-w-screen-sm`}
+        className={`${inter.className} bg-white text-gray-900 max-w-screen-sm m-auto`}
       >
         {children}
       </body>
