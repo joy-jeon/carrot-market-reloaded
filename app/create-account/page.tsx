@@ -1,5 +1,6 @@
 import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import FormInput from "../components/form-input";
 
 export default function CreateAccount() {
   return (
@@ -9,6 +10,30 @@ export default function CreateAccount() {
         <h2 className="text-xl">Fill in the form below to join!</h2>
       </div>
       <form className="flex flex-col gap-3">
+        <FormInput
+          type="text"
+          placeholder="Username"
+          required
+          errors={["error here"]}
+        />
+        <FormInput
+          type="email"
+          placeholder="email"
+          required
+          errors={["error here"]}
+        />
+        <FormInput
+          type="password"
+          placeholder="password"
+          required
+          errors={["error here"]}
+        />
+        <FormInput
+          type="password"
+          placeholder="confirm password"
+          required
+          errors={["error here"]}
+        />
         <button className="primary-btn h-10">Create account</button>
       </form>
       <div className="w-full h-px bg-neutral-500" />
