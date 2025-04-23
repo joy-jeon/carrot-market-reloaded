@@ -1,42 +1,46 @@
 "use client";
-import { FireIcon } from "@heroicons/react/24/solid";
+
 import FormInput from "@/components/form-input";
 import FormButton from "@/components/form-button";
 import { useFormState } from "react-dom";
-import { handleForm } from "./login/actions";
-import { EnvelopeIcon } from "@heroicons/react/24/solid";
-import { KeyIcon } from "@heroicons/react/24/solid";
-import { UserIcon } from "@heroicons/react/24/solid";
+import { handleForm } from "./actions";
+import type { FormState } from "./actions";
+import {
+  FireIcon,
+  EnvelopeIcon,
+  KeyIcon,
+  UserIcon,
+} from "@heroicons/react/24/solid";
 
 export default function Home() {
-  const [state, action] = useFormState(handleForm, {
-    errors: {},
-    message: "",
-  } as any);
+  const [state, dispatch] = useFormState<FormState, FormData>(handleForm, {
+    fieldErrors: {},
+  });
 
   return (
     <div className="flex flex-col items-center justify-between min-h-screen p-6">
       <div className="my-auto w-full flex flex-col items-center gap-6 *:font-medium">
         <FireIcon className="size-14 text-[#ff7a7f]" />
 
-        <form action={action} className="flex flex-col gap-3 w-2/3">
+        <form action={dispatch} className="flex flex-col gap-3 w-2/3">
           <div className="relative">
             <FormInput
               name="email"
               type="email"
               placeholder="email"
               required
-              errors={state?.errors?.email ?? []}
+              errors={"fieldErrors" in state ? state.fieldErrors.email : []}
             />
+
             <EnvelopeIcon className="input-icon" />
           </div>
           <div className="relative">
             <FormInput
-              name="text"
+              name="username"
               type="text"
               placeholder="username"
               required
-              errors={state?.errors?.username ?? []}
+              errors={"fieldErrors" in state ? state.fieldErrors.username : []}
             />
             <UserIcon className="input-icon" />
           </div>
@@ -46,7 +50,7 @@ export default function Home() {
               type="password"
               placeholder="password"
               required
-              errors={state?.errors ?? []}
+              errors={"fieldErrors" in state ? state.fieldErrors.password : []}
             />
             <KeyIcon className="input-icon" />
           </div>

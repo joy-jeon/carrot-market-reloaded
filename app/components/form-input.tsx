@@ -20,7 +20,11 @@ export default function FormInput({
           bg-transparent rounded-3xl h-12 outline-none border-neutral-300 pl-10
           ring-transparent transition placeholder:text-gray-300
           focus:ring-2  focus:ring-neutral-300 focus:ring-offset-2 focus:border-neutral-300
-          ${errors.length > 0 ? "border-red-400" : "border-neutral-300"}
+          ${
+            errors.length > 0
+              ? "border-red-400 ring-red-400 ring-2 ring-offset-2"
+              : "border-neutral-300"
+          }
         `}
         type={type}
         placeholder={placeholder}
