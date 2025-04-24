@@ -38,3 +38,85 @@
 ## 결론
 
 이번 과제에서는 Next.js의 server actions과 useFormState, useFormStatus를 활용하여 폼 제출 상태 관리와 서버와의 상호작용을 구현하였습니다. 이를 통해 Tailwind CSS와 Next.js의 기능들을 조합하여, 클라이언트와 서버 간의 상호작용을 처리하는 방법을 학습할 수 있었습니다.
+
+<hr>
+
+# Assignment #27
+
+### Fail
+
+<p align='center'>
+<img src='./docs/fail.png' width='560'>
+</p>
+
+### Success
+
+<p align='center'>
+<img src='./docs/success.png' width='560'>
+</p>
+
+# Zod를 활용한 유효성 검증 및 에러 처리
+
+## 1. Zod를 활용한 유효성 검증
+
+### 객체 스키마 생성
+
+- `z.object`를 사용하여 로그인 폼의 스키마를 정의합니다.  
+  [공식 문서: Object Schema](https://zod.dev/?id=objects)
+
+### 문자열 유효성 검사
+
+- 이메일, 유저명, 비밀번호에 대해 각각 `string` 관련 유효성 검사를 진행합니다.  
+  [공식 문서: String](https://zod.dev/?id=strings)
+
+#### 이메일 검증
+
+- `email` 메서드: 이메일 형식 유효성 검사
+- `refine` 메서드: `"@zod.com"`을 포함한 이메일만 통과  
+  [공식 문서: Refine](https://zod.dev/?id=refine)
+
+#### 유저명 검증
+
+- `min` 메서드: 최소 5글자 이상이어야 통과
+
+#### 비밀번호 검증
+
+- `min` 메서드: 최소 10글자 이상
+- `regex` 메서드: 숫자 최소 1개 포함
+
+### 검증 로직
+
+- `server actions`에서 `safeParse`를 사용하여 폼 데이터 검증
+- 성공 시: 성공 메시지 반환
+- 실패 시: 에러 처리  
+  [공식 문서: safeParse](https://zod.dev/?id=safeparse)
+
+## 2. 유효성 검증에 대한 에러 처리
+
+### safeParse의 반환값
+
+- 성공 시: `success: true`와 검증된 데이터 반환
+- 실패 시: `success: false`와 에러 객체 반환
+
+### 에러 메시지 단순화
+
+- `error.flatten()`을 사용하여 에러 메시지를 단순화
+- 클라이언트에서 접근 용이하게 구성  
+  [공식 문서: Flatten Errors](https://zod.dev/?id=flattenerrors)
+
+## 3. 에러 메시지 변경
+
+### 에러 메시지 전달 방식
+
+- 각 Input 항목에 전달하는 에러 메시지는 문자열 배열 형태로 변경
+- `fieldErrors`에서 각 항목의 에러 메시지를 추출하여 사용자에게 표시
+
+## 결론
+
+이번 과제에서는 다음을 구현하고 학습하였습니다:
+
+- Zod를 사용한 로그인 폼 유효성 검증
+- `safeParse` 및 `flatten`을 통한 검증 결과 및 에러 메시지 처리
+- Zod와 Tailwind CSS의 조합을 통해 간결하고 유지보수 쉬운 폼 검증 방식 구현
+
+이를 통해 프론트엔드에서 안정적이고 효율적인 유효성 검증 시스템을 만들 수 있었습니다.

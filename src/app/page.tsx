@@ -18,14 +18,27 @@ export default function Home() {
         <FireIcon className="size-20 text-red-400" />
       </h1>
       <form action={action} className="w-full flex flex-col gap-5">
-        <Input name="email" type="email" placeholder="Email" required={true} labelIcon={<EnvelopeIcon />} />
-        <Input name="username" placeholder="Username" required={true} labelIcon={<UserIcon />} />
+        <Input
+          name="email"
+          type="email"
+          placeholder="Email"
+          required={true}
+          errors={state?.error?.fieldErrors.email}
+          labelIcon={<EnvelopeIcon />}
+        />
+        <Input
+          name="username"
+          placeholder="Username"
+          required={true}
+          errors={state?.error?.fieldErrors.username}
+          labelIcon={<UserIcon />}
+        />
         <Input
           name="password"
           type="password"
           placeholder="Password"
           required={true}
-          error={state?.error}
+          errors={state?.error?.fieldErrors.password}
           labelIcon={<KeyIcon />}
         />
         <Button text="Log in" />
